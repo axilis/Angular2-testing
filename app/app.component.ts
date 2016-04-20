@@ -5,7 +5,7 @@ import {Component} from 'angular2/core';
     template: `
         <h1>{{task.id}}</h1>
         <h1 [style.color]="task.priority">{{task.title}}</h1>
-        <input value="{{task.title}}" placeholder="Task title"/>
+        <input [(ngModel)]="task.title" placeholder="Task title"/>
         
         <input type="button" (click)="showTitle(task.title)" />
     `
