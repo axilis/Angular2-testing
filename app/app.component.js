@@ -1,4 +1,4 @@
-System.register(['angular2/core'], function(exports_1, context_1) {
+System.register(['angular2/core', './task.component'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,12 +10,15 @@ System.register(['angular2/core'], function(exports_1, context_1) {
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1;
-    var AppComponent, TodoItem;
+    var core_1, task_component_1;
+    var AppComponent;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
+            },
+            function (task_component_1_1) {
+                task_component_1 = task_component_1_1;
             }],
         execute: function() {
             AppComponent = (function () {
@@ -43,19 +46,14 @@ System.register(['angular2/core'], function(exports_1, context_1) {
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: 'my-app',
-                        template: "        \n        <ul>\n            <li *ngFor=\"#task of tasks\" (click)=\"taskSelected(task)\">\n                <div [style.color]=\"task.priority\">{{task.id}} - {{task.title}}</div>\n            <li>\n        </ul>\n        \n        <h1 *ngIf=\"selectedTask\">{{selectedTask.title}}</h1>\n        \n        <input [(ngModel)]=\"newTaskTitle\"/>\n        <input type=\"button\" (click)=\"saveNewTask(newTaskTitle)\"/>\n    "
+                        directives: [task_component_1.TaskComponent],
+                        template: "        \n        <ul>\n            <li *ngFor=\"#task of tasks\" (click)=\"taskSelected(task)\">\n                <div [style.color]=\"task.priority\">{{task.id}} - {{task.title}}</div>\n            <li>\n        </ul>\n        \n        <task-detail [currentTask]=\"selectedTask\"></task-detail>\n        \n        <input [(ngModel)]=\"newTaskTitle\"/>\n        <input type=\"button\" (click)=\"saveNewTask(newTaskTitle)\"/>\n    "
                     }), 
                     __metadata('design:paramtypes', [])
                 ], AppComponent);
                 return AppComponent;
             }());
             exports_1("AppComponent", AppComponent);
-            TodoItem = (function () {
-                function TodoItem() {
-                }
-                return TodoItem;
-            }());
-            exports_1("TodoItem", TodoItem);
         }
     }
 });

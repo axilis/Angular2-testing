@@ -1,7 +1,10 @@
 import {Component} from 'angular2/core';
+import {TodoItem} from './todo'
+import {TaskComponent} from './task.component'
 
 @Component({
     selector: 'my-app',
+    directives: [TaskComponent],
     template: `        
         <ul>
             <li *ngFor="#task of tasks" (click)="taskSelected(task)">
@@ -9,7 +12,7 @@ import {Component} from 'angular2/core';
             <li>
         </ul>
         
-        <h1 *ngIf="selectedTask">{{selectedTask.title}}</h1>
+        <task-detail [currentTask]="selectedTask"></task-detail>
         
         <input [(ngModel)]="newTaskTitle"/>
         <input type="button" (click)="saveNewTask(newTaskTitle)"/>
@@ -43,10 +46,4 @@ export class AppComponent {
     showTitle(title: string) {
         alert(title);
     }
-}
-
-export class TodoItem {
-    id: number;
-    title: string;
-    priority: string;
 }
