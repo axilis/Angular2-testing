@@ -1,10 +1,12 @@
-import {Component} from 'angular2/core';
-import {TodoItem} from './todo'
-import {TaskComponent} from './task.component'
+import {Component, OnInit} from 'angular2/core';
+import {TodoItem} from './todo';
+import {TaskComponent} from './task.component';
+import {TaskService} from './task.service';
 
 @Component({
     selector: 'my-app',
     directives: [TaskComponent],
+    providers: [TaskService],
     template: `        
         <ul>
             <li *ngFor="#task of tasks" (click)="taskSelected(task)">
@@ -20,11 +22,15 @@ import {TaskComponent} from './task.component'
 })
 
 export class AppComponent {
-    tasks: TodoItem[] = [
-        { id: 1, title: "Clean up your room bro!", priority: "red" },
-        { id: 2, title: "Brush teeth", priority: "green" },
-        { id: 3, title: "Empty trash", priority: "blue" }
-    ]
+    tasks: TodoItem[];
+
+    constructor(private _taskService: TaskService) {
+
+    }
+
+    ngOnInit() {
+        this.tasks = this._taskService.getTasks();
+    }
 
     selectedTask: TodoItem;
 

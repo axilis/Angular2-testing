@@ -1,4 +1,4 @@
-System.register(['angular2/core', './task.component'], function(exports_1, context_1) {
+System.register(['angular2/core', './task.component', './task.service'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', './task.component'], function(exports_1, conte
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, task_component_1;
+    var core_1, task_component_1, task_service_1;
     var AppComponent;
     return {
         setters:[
@@ -19,16 +19,18 @@ System.register(['angular2/core', './task.component'], function(exports_1, conte
             },
             function (task_component_1_1) {
                 task_component_1 = task_component_1_1;
+            },
+            function (task_service_1_1) {
+                task_service_1 = task_service_1_1;
             }],
         execute: function() {
             AppComponent = (function () {
-                function AppComponent() {
-                    this.tasks = [
-                        { id: 1, title: "Clean up your room bro!", priority: "red" },
-                        { id: 2, title: "Brush teeth", priority: "green" },
-                        { id: 3, title: "Empty trash", priority: "blue" }
-                    ];
+                function AppComponent(_taskService) {
+                    this._taskService = _taskService;
                 }
+                AppComponent.prototype.ngOnInit = function () {
+                    this.tasks = this._taskService.getTasks();
+                };
                 AppComponent.prototype.saveNewTask = function (taskTitle) {
                     var newTask = {
                         id: this.tasks.length + 1,
@@ -47,9 +49,10 @@ System.register(['angular2/core', './task.component'], function(exports_1, conte
                     core_1.Component({
                         selector: 'my-app',
                         directives: [task_component_1.TaskComponent],
+                        providers: [task_service_1.TaskService],
                         template: "        \n        <ul>\n            <li *ngFor=\"#task of tasks\" (click)=\"taskSelected(task)\">\n                <div [style.color]=\"task.priority\">{{task.id}} - {{task.title}}</div>\n            <li>\n        </ul>\n        \n        <task-detail [currentTask]=\"selectedTask\"></task-detail>\n        \n        <input [(ngModel)]=\"newTaskTitle\"/>\n        <input type=\"button\" (click)=\"saveNewTask(newTaskTitle)\"/>\n    "
                     }), 
-                    __metadata('design:paramtypes', [])
+                    __metadata('design:paramtypes', [task_service_1.TaskService])
                 ], AppComponent);
                 return AppComponent;
             }());
