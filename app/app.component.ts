@@ -10,6 +10,9 @@ import {Component} from 'angular2/core';
         </ul>
         
         <h1 *ngIf="selectedTask">{{selectedTask.title}}</h1>
+        
+        <input [(ngModel)]="newTaskTitle"/>
+        <input type="button" (click)="saveNewTask(newTaskTitle)"/>
     `
 })
 
@@ -19,10 +22,21 @@ export class AppComponent {
         { id: 2, title: "Brush teeth", priority: "green" },
         { id: 3, title: "Empty trash", priority: "blue" }
     ]
-    
+
     selectedTask: TodoItem;
-    
-    taskSelected(task: TodoItem){
+
+    newTaskTitle: string;
+
+    saveNewTask(taskTitle: string) {
+        let newTask: TodoItem = {
+            id: this.tasks.length + 1,
+            title: taskTitle,
+            priority: "black"
+        }
+        this.tasks.push(newTask);
+    }
+
+    taskSelected(task: TodoItem) {
         this.selectedTask = task;
     }
 

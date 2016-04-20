@@ -26,6 +26,14 @@ System.register(['angular2/core'], function(exports_1, context_1) {
                         { id: 3, title: "Empty trash", priority: "blue" }
                     ];
                 }
+                AppComponent.prototype.saveNewTask = function (taskTitle) {
+                    var newTask = {
+                        id: this.tasks.length + 1,
+                        title: taskTitle,
+                        priority: "black"
+                    };
+                    this.tasks.push(newTask);
+                };
                 AppComponent.prototype.taskSelected = function (task) {
                     this.selectedTask = task;
                 };
@@ -35,7 +43,7 @@ System.register(['angular2/core'], function(exports_1, context_1) {
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: 'my-app',
-                        template: "        \n        <ul>\n            <li *ngFor=\"#task of tasks\" (click)=\"taskSelected(task)\">\n                <div [style.color]=\"task.priority\">{{task.id}} - {{task.title}}</div>\n            <li>\n        </ul>\n        \n        <h1 *ngIf=\"selectedTask\">{{selectedTask.title}}</h1>\n    "
+                        template: "        \n        <ul>\n            <li *ngFor=\"#task of tasks\" (click)=\"taskSelected(task)\">\n                <div [style.color]=\"task.priority\">{{task.id}} - {{task.title}}</div>\n            <li>\n        </ul>\n        \n        <h1 *ngIf=\"selectedTask\">{{selectedTask.title}}</h1>\n        \n        <input [(ngModel)]=\"newTaskTitle\"/>\n        <input type=\"button\" (click)=\"saveNewTask(newTaskTitle)\"/>\n    "
                     }), 
                     __metadata('design:paramtypes', [])
                 ], AppComponent);
