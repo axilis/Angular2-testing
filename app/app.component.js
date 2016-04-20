@@ -20,11 +20,11 @@ System.register(['angular2/core'], function(exports_1, context_1) {
         execute: function() {
             AppComponent = (function () {
                 function AppComponent() {
-                    this.task = {
-                        id: 1,
-                        title: "Clean up your room bro!",
-                        priority: "red"
-                    };
+                    this.tasks = [
+                        { id: 1, title: "Clean up your room bro!", priority: "red" },
+                        { id: 2, title: "Brush teeth", priority: "green" },
+                        { id: 3, title: "Empty trash", priority: "blue" }
+                    ];
                 }
                 AppComponent.prototype.showTitle = function (title) {
                     alert(title);
@@ -32,7 +32,7 @@ System.register(['angular2/core'], function(exports_1, context_1) {
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: 'my-app',
-                        template: "\n        <h1>{{task.id}}</h1>\n        <h1 [style.color]=\"task.priority\">{{task.title}}</h1>\n        <input [(ngModel)]=\"task.title\" placeholder=\"Task title\"/>\n        \n        <input type=\"button\" (click)=\"showTitle(task.title)\" />\n    "
+                        template: "        \n        <ul>\n            <li *ngFor=\"#task of tasks\">\n                <div [style.color]=\"task.priority\">{{task.id}} - {{task.title}}</div>\n            <li>\n        </ul>\n    "
                     }), 
                     __metadata('design:paramtypes', [])
                 ], AppComponent);

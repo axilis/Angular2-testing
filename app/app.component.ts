@@ -2,21 +2,21 @@ import {Component} from 'angular2/core';
 
 @Component({
     selector: 'my-app',
-    template: `
-        <h1>{{task.id}}</h1>
-        <h1 [style.color]="task.priority">{{task.title}}</h1>
-        <input [(ngModel)]="task.title" placeholder="Task title"/>
-        
-        <input type="button" (click)="showTitle(task.title)" />
+    template: `        
+        <ul>
+            <li *ngFor="#task of tasks">
+                <div [style.color]="task.priority">{{task.id}} - {{task.title}}</div>
+            <li>
+        </ul>
     `
 })
 
 export class AppComponent {
-    task: TodoItem = {
-        id: 1,
-        title: "Clean up your room bro!",
-        priority: "red"
-    }
+    tasks: TodoItem[] = [
+        { id: 1, title: "Clean up your room bro!", priority: "red" },
+        { id: 2, title: "Brush teeth", priority: "green" },
+        { id: 3, title: "Empty trash", priority: "blue" }
+    ]
 
     showTitle(title: string) {
         alert(title);
