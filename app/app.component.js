@@ -11,7 +11,7 @@ System.register(['angular2/core'], function(exports_1, context_1) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
     var core_1;
-    var AppComponent;
+    var AppComponent, TodoItem;
     return {
         setters:[
             function (core_1_1) {
@@ -20,18 +20,27 @@ System.register(['angular2/core'], function(exports_1, context_1) {
         execute: function() {
             AppComponent = (function () {
                 function AppComponent() {
-                    this.task = "Clean up";
+                    this.task = {
+                        id: 1,
+                        title: "Clean up your room bro!"
+                    };
                 }
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: 'my-app',
-                        template: '<h1>{{task}}</h1>'
+                        template: '<h1>{{task.title}}</h1>'
                     }), 
                     __metadata('design:paramtypes', [])
                 ], AppComponent);
                 return AppComponent;
             }());
             exports_1("AppComponent", AppComponent);
+            TodoItem = (function () {
+                function TodoItem() {
+                }
+                return TodoItem;
+            }());
+            exports_1("TodoItem", TodoItem);
         }
     }
 });

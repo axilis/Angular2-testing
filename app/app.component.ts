@@ -2,9 +2,17 @@ import {Component} from 'angular2/core';
 
 @Component({
     selector: 'my-app',
-    template: '<h1>{{task}}</h1>'
+    template: '<h1>{{task.title}}</h1>'
 })
 
 export class AppComponent {
-    task = "Clean up";
+    task: TodoItem = {
+        id: 1,
+        title: "Clean up your room bro!"
+    }
+}
+
+export class TodoItem {
+    id: number;
+    title: string;
 }
