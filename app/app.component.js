@@ -20,11 +20,12 @@ System.register(['angular2/core'], function(exports_1, context_1) {
         execute: function() {
             AppComponent = (function () {
                 function AppComponent() {
+                    this.task = "Clean up";
                 }
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: 'my-app',
-                        template: '<h1>It works!</h1>'
+                        template: '<h1>{{task}}</h1>'
                     }), 
                     __metadata('design:paramtypes', [])
                 ], AppComponent);
