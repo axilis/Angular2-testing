@@ -6,6 +6,8 @@ import {Component} from 'angular2/core';
         <h1>{{task.id}}</h1>
         <h1 [style.color]="task.priority">{{task.title}}</h1>
         <input value="{{task.title}}" placeholder="Task title"/>
+        
+        <input type="button" (click)="showTitle(task.title)" />
     `
 })
 
@@ -14,6 +16,10 @@ export class AppComponent {
         id: 1,
         title: "Clean up your room bro!",
         priority: "red"
+    }
+
+    showTitle(title: string) {
+        alert(title);
     }
 }
 
