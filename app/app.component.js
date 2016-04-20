@@ -22,13 +22,14 @@ System.register(['angular2/core'], function(exports_1, context_1) {
                 function AppComponent() {
                     this.task = {
                         id: 1,
-                        title: "Clean up your room bro!"
+                        title: "Clean up your room bro!",
+                        priority: "red"
                     };
                 }
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: 'my-app',
-                        template: "\n        <h1>{{task.id}}</h1>\n        <h1>{{task.title}}</h1>\n        <input value=\"{{task.title}}\" placeholder=\"Task title\"/>\n    "
+                        template: "\n        <h1>{{task.id}}</h1>\n        <h1 [style.color]=\"task.priority\">{{task.title}}</h1>\n        <input value=\"{{task.title}}\" placeholder=\"Task title\"/>\n    "
                     }), 
                     __metadata('design:paramtypes', [])
                 ], AppComponent);
