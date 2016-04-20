@@ -5,6 +5,7 @@ import {Component} from 'angular2/core';
     template: `
         <h1>{{task.id}}</h1>
         <h1>{{task.title}}</h1>
+        <input value="{{task.title}}" placeholder="Task title"/>
     `
 })
 
