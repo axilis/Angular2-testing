@@ -26,13 +26,16 @@ System.register(['angular2/core'], function(exports_1, context_1) {
                         { id: 3, title: "Empty trash", priority: "blue" }
                     ];
                 }
+                AppComponent.prototype.taskSelected = function (task) {
+                    this.selectedTask = task;
+                };
                 AppComponent.prototype.showTitle = function (title) {
                     alert(title);
                 };
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: 'my-app',
-                        template: "        \n        <ul>\n            <li *ngFor=\"#task of tasks\">\n                <div [style.color]=\"task.priority\">{{task.id}} - {{task.title}}</div>\n            <li>\n        </ul>\n    "
+                        template: "        \n        <ul>\n            <li *ngFor=\"#task of tasks\" (click)=\"taskSelected(task)\">\n                <div [style.color]=\"task.priority\">{{task.id}} - {{task.title}}</div>\n            <li>\n        </ul>\n        \n        <h1 *ngIf=\"selectedTask\">{{selectedTask.title}}</h1>\n    "
                     }), 
                     __metadata('design:paramtypes', [])
                 ], AppComponent);
