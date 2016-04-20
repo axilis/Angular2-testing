@@ -28,7 +28,7 @@ System.register(['angular2/core'], function(exports_1, context_1) {
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: 'my-app',
-                        template: '<h1>{{task.title}}</h1>'
+                        template: "\n        <h1>{{task.id}}</h1>\n        <h1>{{task.title}}</h1>\n    "
                     }), 
                     __metadata('design:paramtypes', [])
                 ], AppComponent);
